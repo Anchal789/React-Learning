@@ -10,6 +10,7 @@
 		padding: 32px 20px 24px;
 		gap: 18px;
 	}
+	height: 100dvh;
 }
 
 .center div {
@@ -17,7 +18,39 @@
 	flex-direction: column;
 }
 
-label {
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	width: 50%;
+}
+
+.title {
+	font-size: 32px;
+	line-height: 118%;
+	letter-spacing: -0.24px;
+	margin: 0 0 8px;
+	text-align: center;
+	@media (max-width: 1024px) {
+		font-size: 24px;
+	}
+	color: white;
+}
+
+.description {
+	font-size: 14px;
+	line-height: 150%;
+	letter-spacing: -0.24px;
+	margin: 0 0 8px;
+	text-align: center;
+	@media (max-width: 1024px) {
+		font-size: 16px;
+	}
+	color: white;
+	max-width: 100%
+}
+
+.label {
 	font-size: 24px;
 	line-height: 118%;
 	letter-spacing: -0.24px;
@@ -28,19 +61,19 @@ label {
 	}
 }
 
-input {
+.input {
 	width: 300px;
 	max-width: 100%;
 	padding: 12px 16px;
 	font-size: 15px;
 	line-height: 135%;
 	border-radius: 4px;
-	border: 1px solid var(--accent-border);
+	border: 1px solid #aa3bff;
 }
 
-input.invalid {
+.input:invalid {
 	background-color: rgb(106, 46, 46);
-	border-color: red;
+	border-color: red !important;
 }
 
 .login-button {
@@ -48,8 +81,7 @@ input.invalid {
 	font-size: 15px;
 	line-height: 135%;
 	border-radius: 4px;
-	background-color: var(--accent);
-	color: var(--text-h);
+	background-color: #aa3bff;
 	border: none;
 	cursor: pointer;
 }

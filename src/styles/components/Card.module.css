@@ -1,0 +1,67 @@
+.cardContainer {
+	/* Uses your global background and border variables */
+	background: var(--bg);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+
+	/* Uses your global shadow variable */
+	box-shadow: var(--shadow);
+
+	overflow: hidden;
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+	max-width: 350px;
+	text-align: left; /* Cards usually look better left-aligned even if root is centered */
+}
+
+.isClickable {
+	cursor: pointer;
+}
+
+.isClickable:hover {
+	transform: translateY(-5px);
+	/* Uses your accent color for a subtle hover glow */
+	box-shadow: 0 10px 20px -5px var(--accent-bg);
+	border-color: var(--accent-border);
+}
+
+.cardImage img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	display: block;
+}
+
+.cardContent {
+	padding: 1.5rem;
+}
+
+.cardTitle {
+	margin: 0;
+	font-size: 1.25rem;
+	font-family: var(--heading);
+	/* Uses your heading text variable */
+	color: var(--text-h);
+}
+
+.cardSubtitle {
+	margin: 0.25rem 0 1rem;
+	font-size: 0.9rem;
+	color: var(--text);
+	font-weight: 400;
+	opacity: 0.8;
+}
+
+.cardBody {
+	font-size: 0.95rem;
+	line-height: 1.6;
+	color: var(--text);
+}
+
+.cardFooter {
+	padding: 1rem 1.5rem;
+	/* Uses your social-bg/code-bg for a subtle footer distinction */
+	background: var(--social-bg);
+	border-top: 1px solid var(--border);
+}
