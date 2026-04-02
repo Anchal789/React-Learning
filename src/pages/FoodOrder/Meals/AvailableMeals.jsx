@@ -1,37 +1,35 @@
 import MealItem from './MealItem/MealItem';
 import classes from '../../../styles/FoodOrder/AvailableMeals.module.css'
 import FoodCard from '../../../components/FoodCard';
-
-const DUMMY_MEALS = [
-    {
-        id: 'm1',
-        name: 'Sushi',
-        description: 'Finest fish and veggies',
-        price: 22.99,
-    },
-    {
-        id: 'm2',
-        name: 'Schnitzel',
-        description: 'A german specialty!',
-        price: 16.5,
-    },
-    {
-        id: 'm3',
-        name: 'Barbecue Burger',
-        description: 'American, raw, meaty',
-        price: 12.99,
-    },
-    {
-        id: 'm4',
-        name: 'Green Bowl',
-        description: 'Healthy...and green...',
-        price: 18.99,
-    },
-  ];
+import { supabase } from '../../../utils/supabase';
+import { useEffect, useState } from 'react';
 
 function AvailableMeals() {
-    const mealsList = DUMMY_MEALS.map((meal) => (
-        <MealItem 
+
+    const [availableMeals, setAvailableMeals] = useState([]);
+    const [status, setStatus] = useState({ isLoading: false, error: null });
+
+    useEffect(() => {
+        const fetchMeals = async () => {
+            setStatus({ isLoading: true, error: null });
+            const { data, error } = await supabase
+                .schema("public")
+                .from('meals').select('*')
+            if (error) {
+                console.error("Error fetching meals:", error);
+                setStatus({ isLoading: false, error: error.message });
+            } else if (data) {
+                setStatus({ isLoading: false, error: null });
+                setAvailableMeals(data);
+            } else {
+                setStatus({ isLoading: false, error: "Unknown error occurred" });
+            }
+        }
+        fetchMeals()
+    }, [])
+
+    const mealsList = availableMeals.map((meal) => (
+        <MealItem
             id={meal.id}
             key={meal.id}
             name={meal.name}
@@ -43,6 +41,7 @@ function AvailableMeals() {
     return (
         <section className={classes.meals}>
             <FoodCard>
+                {status.isLoading && <p>Loading meals...</p>}
                 <ul>
                     {mealsList}
                 </ul>

@@ -17,6 +17,13 @@ const Dashboard = () => {
             description: "A simple food ordering application built with React.",
             footer: "Created with React and CSS.",
             route: "/food-order-app"
+        },
+        {
+            id: 3,
+            title: "Practice",
+            description: "A simple practice application built with React.",
+            footer: "Created with React and CSS.",
+            route: "/practice"
         }
     ]
     const navigate = useNavigate();
