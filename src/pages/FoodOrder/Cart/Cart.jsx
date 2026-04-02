@@ -131,12 +131,12 @@ const Cart = (props) => {
             postalCode: "",
             city: "",
         });
-        cartCtx.clearCart();
+        cartCtx.items.forEach(item => cartItemRemovehandler(item.id));
     };
 
     return (
         <Modal onClick={props.onClick}>
-            {formSubmission.errorMessage ? <p className={classes.error}>{formSubmission.errorMessage}</p> : formSubmission.successMessage ? <h3 className={classes.success}>{formSubmission.successMessage}</h3> : <>
+            {formSubmission.isSubmitting ? <Spinner /> : formSubmission.errorMessage ? <p className={classes.error}>{formSubmission.errorMessage}</p> : formSubmission.successMessage ? <h3 className={classes.success}>{formSubmission.successMessage}</h3> : <>
                 {cartItems}
                 <div className={classes.total}>
                     <span>Total Amount</span>
@@ -187,3 +187,13 @@ const Cart = (props) => {
 };
 
 export default Cart;
+
+const Spinner = () => {
+    return (
+        <div className={classes.loaderContainer}>
+            <div className={classes.spinner}>
+            </div>
+            <p>Submitting your order...</p>
+        </div >
+    );
+};

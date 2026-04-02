@@ -61,7 +61,7 @@
 .checkOutForm {
 	display: flex;
 	flex-direction: column;
-	gap: .5rem;
+	gap: 0.5rem;
 	margin-top: 1rem;
 	width: 50%;
 	border: 1px solid #ccc;
@@ -75,9 +75,9 @@
 }
 
 .label {
-    font-size: 0.875rem;
+	font-size: 0.875rem;
 	font-weight: bold;
-    margin-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 .input {
@@ -96,20 +96,59 @@
 }
 
 .no-items {
-    font-size: 1.25rem;
-    color: #8a2b06;
-    margin-top: 2rem;
-    text-align: center;
+	font-size: 1.25rem;
+	color: #8a2b06;
+	margin-top: 2rem;
+	text-align: center;
 }
 
 .error {
-    color: rgb(255, 49, 49);
+	color: rgb(255, 49, 49);
 	font-size: 12px;
-    margin: 0;
+	margin: 0;
 }
 
 .success {
-    color: rgba(29, 173, 29, 0.62);
+	color: rgba(29, 173, 29, 0.62);
+	font-size: 1rem;
+	text-align: center;
+}
+
+.loaderContainer {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    z-index: 100;
+    flex-direction: column;
+	width: 100%;
+	height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.loaderContainer p {
     font-size: 1rem;
-    text-align: center;
+    color: #333;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.spinner {
+	border: 8px solid #f3f3f3;
+	border-top: 8px solid #3498db;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
