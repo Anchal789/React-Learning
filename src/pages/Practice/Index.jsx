@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react";
 import classes from "../../styles/Practice/Practice.module.css";
-import { supabase } from "../../utils/supabase";
+import ReduxButtonComponent from "./ReduxButtonComponent";
+import ReduxPracticeComponent from "./ReduxPracticeComponent";
+
 const Practice = () => {
-    // useEffect(() => {
-    // }, [])
-    const fetchMeals = async () => {
-        const { data, error } = await supabase
-            .schema("public")
-            .from('meals').select('*')
-    }
-    fetchMeals()
 
     return (
         <div className={classes.practice}>
-
+            <ReduxPracticeComponent />
+            <ReduxButtonComponent />
         </div>
     );
 };
